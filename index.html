@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive JavaScript Functions</title>
+</head>
+<body>
+
+    <h1>JavaScript Function Demonstration</h1>
+
+    <!-- Sum Calculation -->
+    <input type="number" id="num1" placeholder="Enter first number">
+    <input type="number" id="num2" placeholder="Enter second number">
+    <button onclick="showSum()">Calculate Sum</button>
+    <p id="sumResult"></p>
+
+    <!-- Even Check -->
+    <input type="number" id="evenNum" placeholder="Enter a number">
+    <button onclick="showIsEven()">Check Even</button>
+    <p id="evenResult"></p>
+
+    <!-- Find Max in an Array -->
+    <input type="text" id="maxArray" placeholder="Enter numbers separated by commas">
+    <button onclick="showMax()">Find Max</button>
+    <p id="maxResult"></p>
+
+    <!-- Filter Odd Numbers -->
+    <input type="text" id="oddArray" placeholder="Enter numbers separated by commas">
+    <button onclick="showOddNumbers()">Filter Odd Numbers</button>
+    <p id="oddResult"></p>
+
+    <!-- Word Count -->
+    <input type="text" id="wordString" placeholder="Enter a sentence">
+    <button onclick="showWordCount()">Count Words</button>
+    <p id="wordCountResult"></p>
+
+    <!-- Remove Duplicates -->
+    <input type="text" id="uniqueArray" placeholder="Enter numbers separated by commas">
+    <button onclick="showUniqueArray()">Remove Duplicates</button>
+    <p id="uniqueResult"></p>
+
+    <script>
+        // Function 1: Calculate Sum
+        function calculateSum(a, b) {
+            return a + b;
+        }
+
+        function showSum() {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            if (!isNaN(num1) && !isNaN(num2)) {
+                document.getElementById("sumResult").innerText = "Sum: " + calculateSum(num1, num2);
+            } else {
+                document.getElementById("sumResult").innerText = "Please enter valid numbers.";
+            }
+        }
+
+        // Function 2: Check if a Number is Even
+        function isEven(num) {
+            return num % 2 === 0;
+        }
+
+        function showIsEven() {
+            let num = parseInt(document.getElementById("evenNum").value);
+            if (!isNaN(num)) {
+                document.getElementById("evenResult").innerText = num + " is " + (isEven(num) ? "Even" : "Odd");
+            } else {
+                document.getElementById("evenResult").innerText = "Please enter a valid number.";
+            }
+        }
+
+        // Function 3: Find Maximum Number in an Array
+        function findMax(arr) {
+            return Math.max(...arr);
+        }
+
+        function showMax() {
+            let arr = document.getElementById("maxArray").value.split(",").map(Number);
+            if (arr.every(num => !isNaN(num))) {
+                document.getElementById("maxResult").innerText = "Max Number: " + findMax(arr);
+            } else {
+                document.getElementById("maxResult").innerText = "Please enter valid numbers.";
+            }
+        }
+
+        // Function 4: Filter Odd Numbers from an Array
+        function filterOddNumbers(arr) {
+            return arr.filter(num => num % 2 !== 0);
+        }
+
+        function showOddNumbers() {
+            let arr = document.getElementById("oddArray").value.split(",").map(Number);
+            if (arr.every(num => !isNaN(num))) {
+                document.getElementById("oddResult").innerText = "Odd Numbers: " + filterOddNumbers(arr).join(", ");
+            } else {
+                document.getElementById("oddResult").innerText = "Please enter valid numbers.";
+            }
+        }
+
+        // Function 5: Count Words in a String
+        function countWords(str) {
+            return str.trim().split(/\s+/).length;
+        }
+
+        function showWordCount() {
+            let str = document.getElementById("wordString").value.trim();
+            if (str.length > 0) {
+                document.getElementById("wordCountResult").innerText = "Word Count: " + countWords(str);
+            } else {
+                document.getElementById("wordCountResult").innerText = "Please enter some text.";
+            }
+        }
+
+        // Function 6: Remove Duplicates from an Array
+        function removeDuplicates(arr) {
+            return [...new Set(arr)];
+        }
+
+        function showUniqueArray() {
+            let arr = document.getElementById("uniqueArray").value.split(",").map(Number);
+            if (arr.every(num => !isNaN(num))) {
+                document.getElementById("uniqueResult").innerText = "Unique Array: " + removeDuplicates(arr).join(", ");
+            } else {
+                document.getElementById("uniqueResult").innerText = "Please enter valid numbers.";
+            }
+        }
+    </script>
+
+</body>
+</html>
